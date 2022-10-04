@@ -1,44 +1,40 @@
-import { Component } from 'react'
-import Car from './Cars'
+import React, { Component } from "react";
+import Car from "./Cars";
+import Myheader from "./Myheader";
+import Wrapper from "./Wrapper";
 
 class Mycars extends Component {
+    noCopy = () => {
+        alert("merci de ne pas copier le texte");
+    } 
+
+    // addStyle = (e) => {
+    //     console.log(e.target);
+    //     e.target.classList.contains("styled") ? e.target.classList.remove("styled")  : e.target.classList.add("styled")
+    // }
 
     state = {
-        voiture : [
-            {name: 'Ford', color: 'red', year: 2000},
-            {name: 'Mercedes', color: 'black', year: 2010},
-            {name: 'Peugeot', color: 'green', year: 2018}
-        ],
-        titre : "Mon catalogue Voitures"
-    }
-
-    addtenYears = () => {
-        const updatedState = this.state.voiture.map((param) => {return param.year -= 10;})
-        this.setState({
-            updatedState
-        })
-    }
-
+        cars: ["Ford", "Mercedes", "Peugeot"],
+    };
     render() {
-        const year = new Date().getFullYear()
-        return (
-            <div>
-                <h1>{this.state.titre}</h1>
-
-                <button onClick={this.addtenYears}>+ 10 ans</button>    
-                {/* <Car year={year - this.state.voiture[0].year + ' ans'} color={this.state.voiture[0].color}>{this.state.voiture[0].name}</Car>
-                <Car year={year - this.state.voiture[1].year + ' ans'} color={this.state.voiture[1].color}>{this.state.voiture[1].name}</Car>
-                <Car year={year - this.state.voiture[2].year + ' ans'} color={this.state.voiture[2].color}>{this.state.voiture[2].name}</Car> */}
-
-                {
-                  this.state.voiture.map((voiture, index) => {
-                    return <Car key={index} year={year - voiture.year + ' ans'} color={voiture.color}>{voiture.name}</Car>
-                  })  
-                }
-            </div>
-           
-        )
-    }
+        const { title} = this.props;
+        
+        // Avec React on fait "onCopy" en camel case
+    return (
+      <div>
+        <h1> {title} </h1>
+        {/* <p onCopy={this.noCopy}> 
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo laborum
+          quae praesentium quod error quidem sequi in dignissimos similique,
+          tempora tenetur odit, minus ex ipsam corporis debitis, dolor eius
+          commodi!
+        </p> */}
+        <Car color="red">{this.state.cars[0]}</Car>
+        <Car>{this.state.cars[1]}</Car>
+        <Car color="green">{this.state.cars[2]}</Car>
+      </div>
+    );
+  }
 }
 
-export default Mycars
+export default Mycars;
