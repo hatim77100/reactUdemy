@@ -1,38 +1,61 @@
-import React, { Component } from "react";
+import { Component, Fragment } from "react";
 import Car from "./Cars";
-import Myheader from "./Myheader";
-import Wrapper from "./Wrapper";
 
 class Mycars extends Component {
-    noCopy = () => {
-        alert("merci de ne pas copier le texte");
-    } 
+  state = {
+    voiture: [
+      { name: "Ford", color: "red", year: 2022 },
+      { name: "Mercedes", color: "black", year: 2021},
+      { name: "Peugeot", color: "green", year: 2018 },
+    ],
+    titre: "Mon catalogue Voitures",
+  };
 
-    // addStyle = (e) => {
-    //     console.log(e.target);
-    //     e.target.classList.contains("styled") ? e.target.classList.remove("styled")  : e.target.classList.add("styled")
-    // }
+  addtenYears = () => {
+    const updatedState = this.state.voiture.map((param) => {
+      return (param.year -= 10);
+    });
+    this.setState({
+      updatedState,
+    });
+  };
 
-    state = {
-        cars: ["Ford", "Mercedes", "Peugeot"],
-    };
-    render() {
-        const { title} = this.props;
-        
-        // Avec React on fait "onCopy" en camel case
+  getAge = (year) => {
+    const now = new Date().getFullYear();
+    const age = now - year
+    
+    // ans, an,
+    let frenchYearStr = "";
+    if(age === 1) {
+        frenchYearStr = "an";
+    } else if (age > 1) {
+        frenchYearStr = "ans";
+    }
+    return `${age} ${frenchYearStr}`
+  }
+
+  render() {
     return (
-      <div>
-        <h1> {title} </h1>
-        {/* <p onCopy={this.noCopy}> 
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo laborum
-          quae praesentium quod error quidem sequi in dignissimos similique,
-          tempora tenetur odit, minus ex ipsam corporis debitis, dolor eius
-          commodi!
-        </p> */}
-        <Car color="red">{this.state.cars[0]}</Car>
-        <Car>{this.state.cars[1]}</Car>
-        <Car color="green">{this.state.cars[2]}</Car>
-      </div>
+      < >
+        <h1>{this.state.titre}</h1>
+
+        <button onClick={this.addtenYears}>+ 10 ans</button>
+
+        {
+        this.state.voiture.map(({name, color, year}, index) => {
+          return (
+            <div key={index}>
+            <Car
+              color={color}
+              year= {this.getAge(year)}
+              >
+              {name}
+              </Car>
+            </div>
+          )
+        })
+        }
+      </>
     );
   }
 }
