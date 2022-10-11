@@ -1,11 +1,19 @@
-import './App.css';
-import Result from './Game';
+
+// import Result from './Game';
+// import Btn from './CustomBtn';
+
+import Welcome from "./welcome";
+import Template from "./Template";
 
 function App() {
+  // const sayHello = () => alert("Hello World");
   return (
-    <div className="App">
-     <Result />
-    </div>
+    <>
+     <Template/>
+     {/* <Result />
+     <Btn btnStyle={{backgroundColor: 'yellow', color: "blue"}} handleClick={sayHello}>Say hellow</Btn> */}
+      <Welcome/>
+    </>
   );
 }
 
