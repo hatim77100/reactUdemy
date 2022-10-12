@@ -5,12 +5,12 @@ const Template = () => {
     <Navbar bg="success" variant="dark">
       <Container>
         <Navbar.Brand href="#home">
-          <img
+          {/* <img
             src="./logo192.png"
             width="30"
             height="30"
             className="d-inline-block align-top"
-          />
+          /> */}
           React-Bootstrap
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
