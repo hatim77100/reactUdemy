@@ -1,5 +1,6 @@
 import {Component} from 'react';
 import LifeCycle from './LifeCycle';
+import GetDerived from './getDerived';
 import './App.css';
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        
+        <GetDerived />
       {
         showComponent
       }
