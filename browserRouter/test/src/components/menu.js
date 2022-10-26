@@ -20,7 +20,7 @@ const Menu = () => {
           <div className="collapse navbar-collapse " id="navbarNav">
             <ul className="navbar-nav  ">
               <li className="nav-item">
-                <Link className="nav-link text-light " aria-current="page" to="/docs">
+                <Link className="nav-link text-light " aria-current="page" to="/">
                   Docs
                 </Link>
               </li>
